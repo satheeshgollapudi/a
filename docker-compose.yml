@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  talent.spa:
+    image: mvpstudionz/talent.spa:dev
+    environment:
+      - TALENT_APP_API_URL=http://localhost:60004 # change the localhost to 192.168.99.100 if you're using docker toolbox
+      - TALENT_APP_IDENTITY_API_URL=http://localhost:60005 # change the localhost to 192.168.99.100 if you're using docker toolbox
+    ports:
+      - "3000:5034"
+  talent.services.identity:
+    image: mvpstudionz/talent.services.identity:dev
+    ports:
+      - "60004:60998"
+  talent.api:
+    image: mvpstudionz/talent.api:dev
+    ports:
+      - "60005:60880"
